@@ -1,0 +1,394 @@
+ 
+<ngx-spinner
+bdColor="#ffff"
+size="medium"
+color="black"
+type="ball-scale-multiple"> 
+</ngx-spinner>
+<!-- 
+<section class="datve_header" [ngStyle]="{'width':step==2 ? '74%':'100%'}"> -->
+    <section class="datve_header " [ngClass]="{nav_res_step1:step==1,nav_res_step2:step==2} ">
+  <div class="header_content">
+    <div class="left  ">
+      <ul>
+        <li [ngClass]="{active:step==1}" (click)="backtoStep1()">
+          <span>
+            01
+          </span>
+          <span>
+            CHỌN LOẠI VÉ
+          </span>
+        </li>
+        <li [ngClass]="{active:step==2}">
+          <span>
+            02
+          </span>
+          <span>
+            CHỌN GHẾ & THANH TOÁN
+          </span>
+        </li>
+        <li [ngClass]="{active:step==3}">
+          <span>
+            03
+          </span>
+          <span>
+            KẾT QUẢ ĐẶT VÉ
+          </span>
+        </li>
+      </ul>
+
+
+    </div>
+    <div class="header_responsive">
+      <div class="back">
+         
+        <img class="backMobile ng-scope" src="https://www.123phim.vn/app/assets/img/icons/cancel-arrow.png"
+          (click)="backtoStep1()">
+      </div>
+      <div class="step">
+        <span class="step1 " *ngIf="step==1">01.Chọn loại vé</span>
+        <span class="step2  " *ngIf="step==2">02. CHỌN GHẾ & THANH TOÁN</span>
+        <span class="step3  " *ngIf="step==3">03.Kết quả</span>
+      </div>
+      <div class="dangnhap" style="top:11px">
+        <div *ngIf="isLoginSuccess else notLogins" style="position: relative;">
+
+          <a style="cursor: pointer; color:#fb4226" (click)="showMenuUser()"><i class="fa fa-user-circle mr-3"></i></a>
+          <div class="dropdown-menu  show menuUser" *ngIf="isShowMenuUser">
+            <ul>
+
+              <li>
+                <button style="" class="p-0" (click)="dangxuat()"> Đăng xuất <i
+                    class=" ml-2 fa fa-sign-out"></i></button>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+        <ng-template #notLogins>
+
+          <a (click)="openFormLogin()" style="cursor: pointer;"><i class="fa fa-user-circle mr-3"></i></a>
+
+        </ng-template>
+      </div>
+    </div>
+    <div class="dangnhap right  ">
+      <div *ngIf="isLoginSuccess else notLogin" style="position: relative;">
+
+        <a style="cursor: pointer; color:#fb4226" (click)="showMenuUser()"><i
+            class="fa fa-user-circle mr-3"></i>{{nameUser}}</a>
+        <div class="dropdown-menu show menuUser" *ngIf="isShowMenuUser">
+          <ul>
+
+            <li>
+              <button style="" class="p-0" (click)="dangxuat()"> Đăng xuất <i class=" ml-2 fa fa-sign-out"></i></button>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+      <ng-template #notLogin>
+
+        <a (click)="openFormLogin()" style="cursor: pointer;"><i class="fa fa-user-circle mr-3"></i>Đăng nhập</a>
+      </ng-template>
+    </div>
+  </div>
+</section>
+<section class="datve_body row  ">
+  <div class="left" [ngStyle]="{'width': step==1 ? '26%':'6%'}">
+    <div class="overlay">
+
+    </div>
+    <img src="{{phim.HinhAnh}}" style="width: 100%;height: 100%;object-fit: cover" alt="">
+    <!-- [ngStyle]="{'display': step==1 ? 'block':'none'}" -->
+    <div class="back " *ngIf="step==1">
+      <a routerLink="/home"><img src="https://www.123phim.vn/app/assets/img/icons/prev_checkout.png"  alt="" ></a>
+
+    </div>
+    <div class="titlefilm" *ngIf="step==1">
+
+      <p class="info1 ng-binding"> Ngày mai</p>
+      <p class="info2 ng-binding">
+        <!-- ngIf: film_age >= 13 --><span class="ageType ng-binding ng-scope" ng-if="film_age >= 13">C16</span>
+        {{phim.TenPhim}}
+      </p>
+      <p class="info3 ng-binding">90 phút - 123Phim 8.4 - IMDb 0 - 2D/Digital
+      </p>
+    </div>
+  </div>
+  <div class="mid step1" *ngIf="step==1">
+    <div class="ticketcheckout">
+      <p class="info2 ng-binding">
+        <span class="ageType ng-binding ng-scope">C16</span> {{phim.TenPhim}}
+      </p>
+      <p class="info3 ng-binding">90 phút - 123Phim 8.4 - IMDb 0 - 2D/Digital
+      </p>
+      <div class="topContent row" style="justify-content: unset;">
+
+        <div class="logocinema" style="">
+          <img class="logo" ng-src="https://s3img.vcdn.vn/123phim/2018/09/e520781386bd5436e94d6e15e193a005.png"
+            src="https://s3img.vcdn.vn/123phim/2018/09/e520781386bd5436e94d6e15e193a005.png">
+        </div>
+        <div class="contentcinema">
+          <p class="address"><span class="pcinema ng-binding" style="color:#ff6600">Galaxy</span><span
+              class="cinemaname ng-binding" style=""> - Nguyễn Du</span></p>
+          <p class="hour ng-binding">Hôm nay - 08:45
+            <!-- ngIf: room_name!='' --><span ng-if="room_name!=''" class="ng-binding ng-scope"> - RẠP 3</span>
+            <!-- end ngIf: room_name!='' -->
+          </p>
+        </div>
+
+      </div>
+      <div class="ticket1 row">
+        <div class="col-4 col-md-4 danhcho">
+          Vé người lớn
+        </div>
+        <div class="col-4 col-md-4 gia">
+          75.000 đ
+        </div>
+
+        <div class="col-4 col-md-4 ">
+          <button class="btn btnGiamSLVE" (click)="giamSLVE()">-</button>
+          <span class="number soluong" style="">{{soLuongVe}}</span>
+          <button class="btn btnTangSLVE" (click)="tangSLVE()">+</button>
+        </div>
+      </div>
+
+      <div class="detailticket" >
+        <div class="chosenTicket row  " ng-if="step==1" style="">
+          <div class="chosencontent" style="">
+            <div class="totalcostfull">
+              <div class="title">TỔNG TIỀN</div>
+              <div class="chosenpriceticket ">{{75000 * soLuongVe | number:'.'}} đ</div>
+            </div>
+          </div>
+          <div class="chosenbutton">
+            <button class="continue btn" (click)="chonghe('SpinnerButton')" style="color:white;position: relative;max-height: 84px;height: 84px;width: 160px">
+              CHỌN GHẾ
+              <ngx-spinner name="SpinnerButton" [fullScreen]="false" type="ball-spin-clockwise" 
+              bdColor="#44C027"
+              size="default">
+              </ngx-spinner>
+              <!-- <div class="my-container">
+                <ng-template #customLoadingTemplate>
+                  <div class="custom-class">
+
+                  </div>
+                </ng-template>
+
+                <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+                  [template]="customLoadingTemplate"></ngx-loading>
+
+              </div>
+              <div class="my-container">
+                <ng-template #customLoadingTemplate>
+                  <div class="custom-class">
+
+                  </div>
+                </ng-template>
+
+                <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px',backdropBackgroundColour:'rgba(0, 0, 0, 0.01)' }"
+                  [template]="customLoadingTemplate"></ngx-loading>
+
+              </div> -->
+            </button>
+            <!-- end ngIf: !loadingticket -->
+          </div>
+        </div>
+        <div class="contact">
+          <div class="note">Xin lưu ý, bạn không thể hủy hoặc thay đổi suất chiếu cho vé đã mua.</div>
+          <div class="hot">
+            <div class="hotline">
+              <p class="hotlinetitle">HOTLINE</p>
+              <p class="costcall">Phí cuộc gọi 1000VND/phút</p>
+            </div>
+            <div class="phone" style="">1900 545 436
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="continueMobile row">
+        <div class="col-6 tongtien">
+          {{75000 * soLuongVe | number:'.'}} VNĐ
+        </div>
+        <button class="col-6 continue" (click)="chonghe('SpinnerButton')">
+          TIẾP TỤC
+          <ngx-spinner name="SpinnerButton" [fullScreen]="false" type="ball-spin-clockwise" 
+          bdColor="#44C027"
+          size="default">
+           
+          </ngx-spinner>
+        </button>
+      </div>
+
+
+
+    </div>
+
+  </div>
+  <div class="mid step2 " *ngIf="step==2">
+
+    <div class="chonghe" *ngIf="step==2">
+      <div class="topContent row">
+
+        <div class="row ml-3">
+          <div class="logocinema" style="">
+            <img class="logo" ng-src="https://s3img.vcdn.vn/123phim/2018/09/e520781386bd5436e94d6e15e193a005.png"
+              src="https://s3img.vcdn.vn/123phim/2018/09/e520781386bd5436e94d6e15e193a005.png">
+          </div>
+          <div class="contentcinema">
+            <p class="address"><span class="pcinema ng-binding" style="color:#ff6600">Galaxy</span><span
+                class="cinemaname ng-binding" style=""> - Nguyễn Du</span></p>
+            <p class="hour ng-binding">Hôm nay - 08:45
+              <!-- ngIf: room_name!='' --><span ng-if="room_name!=''" class="ng-binding ng-scope"> - RẠP 3</span>
+              <!-- end ngIf: room_name!='' -->
+            </p>
+          </div>
+        </div>
+        <div class="thoigiangiughe ">
+          <p>Thời gian giữ ghế</p>
+          <p><countdown [config]="{leftTime: 300}"(finished)="onFinished()"  >$!m!:$!s!</countdown></p>
+        </div>
+      </div>
+      <div class="img_manhinh">
+        <img src="https://123phim.vn/app/assets/img/icons/screen.png" alt="">
+      </div>
+
+      <!-- Ghế -->
+      <!-- Ghế -->
+      <!-- Ghế -->
+      <!-- Ghế -->
+
+      <div class="danhsachghe">
+        <div class="  dayghe A row  text-center">
+          <app-ghe *ngFor="let ghe of DanhSachGhe" [itemGhe]="ghe" (emitGhe)="Datghe($event)"></app-ghe>
+
+
+        </div>
+        <!-- Ghế -->
+        <!-- Ghế -->
+        <!-- Ghế -->
+        <!-- Ghế -->
+
+      </div>
+      <div class="trangthaighe">
+        <span class="mr-3">
+          <button class="ghetrong" disabled></button>Ghế trống
+        </span>
+        <span class="mr-3">
+          <button class="ghedangchon" disabled></button>Ghế đang chọn
+        </span>
+        <span class="mr-3">
+          <button class="ghedachon" disabled></button>Ghế đã có người chọn
+        </span>
+        <span class="mr-3">
+          <button class="gheVIp" disabled></button>Ghế VIP
+        </span>
+        <span>
+          <button class="ghesofa" disabled></button>Ghế Sofa
+        </span>
+      </div>
+      <div class="rightcheckout_content">
+        <div class="total row ">
+          <p>{{75000 * soLuongVe}} đ</p>
+        </div>
+        <div class="phim">
+          <p>{{phim.TenPhim}}</p>
+          <p>Galaxy - Nguyễn Du</p>
+          <p>Hôm nay {{phim.NgayKhoiChieu | date:'dd/MM/yyyy'}}- 09:15 - RẠP 5</p>
+        </div>
+        <div class="ghe row">
+          <span>Ghế<h6 *ngFor="let ghe of gheDangDat" style="margin: 0; margin-left: 5px;">
+            {{ghe.Ghe.TenGhe}},</h6>
+          </span>
+          <span>{{75000 * soLuongVe| number:'.'}} đ</span>
+         
+        </div>
+        <div  class=" ghe xemlichsuDatve " style="color:red;cursor: pointer;font-weight: 600;" *ngIf="isLoginSuccess" (click)="xemLichSuDatVe()">
+            Xem lịch sử đặt vé
+        </div>
+      </div>
+      <button class="buyticket disable"   *ngIf="disabledBuyTicket else abc">
+        Đặt Vé
+      </button>
+      <ng-template #abc>
+        <button class="buyticket" (click)="datVe()" >
+          Đặt Vée
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</section>
+<section class="rightcheckout" [ngStyle]="{'right': step==2 ? '0':'-26%'}">
+   
+  <div class="rightcheckout_content">
+    <div class="total row ">
+      <p>{{75000 * soLuongVe| number:'.'}} đ</p>
+    </div>
+    <div class="phim">
+      <p>{{phim.TenPhim}}</p>
+      <p>Galaxy - Nguyễn Du</p>
+      <p>Hôm nay {{phim.NgayKhoiChieu | date:'dd/MM/yyyy'}}- 09:15 - RẠP 5</p>
+    </div>
+    <div class="ghe row">
+      <span class="row m-0">Ghế <h6 *ngFor="let ghe of gheDangDat" style="margin: 0; margin-left: 5px;">
+          {{ghe.Ghe.TenGhe}},</h6></span>
+      <span>{{75000 * soLuongVe| number:'.'}} đ</span>
+      
+    </div>
+    <div  class=" ghe xemlichsuDatve " style="color:red;cursor: pointer;font-weight: 600;" *ngIf="isLoginSuccess" (click)="xemLichSuDatVe()">
+        Xem lịch sử đặt vé
+    </div>
+    
+
+  </div>
+  <button class="buyticket disable"   *ngIf="disabledBuyTicket else abc">
+    Đặt Vé
+  </button>
+  <ng-template #abc>
+    <button class="buyticket" (click)="datVe()" >
+      Đặt Vée
+    </button>
+  </ng-template>
+</section>
+
+<div class="lichsu" [ngClass]="{show:showHistory}" *ngIf="step==2" >
+    <div class="title row m-0 ">
+        <span>LỊCH SỬ ĐẶT VÉ</span><i class="fa fa-arrow-right" (click)="xemLichSuDatVe()"></i>
+      </div>
+      <div class="lichsu_content">
+          
+          <div class="ve" *ngFor="let phim of LichsuDatve">
+              <div class="tenphim">
+                  {{phim.TenPhim}}<span>C16</span>
+                </div>
+                <div class="thoigian">
+                  {{phim.NgayDat | date:'dd/MM/yyyy'}} - {{phim.NgayDat | date:'hh:mm'}}
+                </div>
+                <div class="row m-0">
+                  <div class="tenrap">
+                      <p>Rạp</p>
+                      Galaxy-Nguyễn Du
+                  </div>
+                  <div class="maghe">
+                      <p>Ghế</p>
+                      {{phim.MaGhe}}
+                  </div>
+                </div>
+          </div>
+        
+    
+      </div>
+  </div>
+  <div class="overlay_history" *ngIf="showHistory && step==2" (click)="xemLichSuDatVe()" >
+
+  </div>
+
+
+
+
+
+<app-dangkydangnhap [isShowFormLogin]="showFormLogin" (evtCloseFormLogin)="closeLoginForm($event)"
+  (evtLoginSuccess)="getUserName($event)"></app-dangkydangnhap>

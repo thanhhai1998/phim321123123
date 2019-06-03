@@ -1,0 +1,113 @@
+.icon_input {
+  padding: 0.375rem 0.15rem;
+  font-size: 19px;
+  color: #fb4226;
+}
+
+.input-group::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  height: 2px;
+  width: 0;
+  background: #fb4226;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+.input-group:hover::after {
+  width: 100%;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+.alert-danger{
+  display: flex;
+  align-items: center;
+  padding: 7px 1.25rem;
+  position: relative;
+  .fa-sort-asc{
+    position: absolute;
+    top:-34%;
+    left: 5px;
+    font-size: 38px;
+    color:#F8D7DA;
+  }
+}
+.formDangnhap {
+  h1 {
+    color: #fb4226;
+  }
+  .btn {
+    width: 100%;
+    background: #fb4226;
+    border-color: #fb4226;
+    &:hover {
+      color: #fb4226;
+      background: white;
+    }
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+  }
+  .back {
+    cursor: pointer;
+    font-size: 35px;
+    color: #fb4226;
+  }
+  #newAccount {
+    margin-top: 25px;
+    color: #0678bc;
+    a {
+      color: #0678bc;
+      cursor: pointer;
+      border: 1px solid #0678bc;
+      font-weight: 500;
+      padding: 5px 15px;
+    }
+  }
+  .input-group {
+    padding: 5px;
+    position: relative;
+
+    .form-control {
+      border: none;
+      display: flex;
+      border-radius: 0;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      -ms-border-radius: 0;
+      -o-border-radius: 0;
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.hienformLogin {
+  left: 0;
+}
+.anformLogin {
+  left: -26%;
+}
+
+@media screen and (max-width: 768px) {
+  .formDangnhap {
+    width: 100%;
+  }
+  .hienformLogin {
+    left: 0;
+  }
+  .anformLogin {
+    left: -100%;
+  }
+}

@@ -1,0 +1,59 @@
+<div class="title dangky formDangnhap">
+  <h1>Register</h1>
+  <form #formDangky="ngForm" (ngSubmit)="Dangky(formDangky.value,formDangky)">
+      
+    <div class="input-group">
+            <div class="icon_input">
+                    <i class="fa fa-user-circle-o"></i>
+                  </div>
+        <input type="text" class="form-control" required #taikhoan="ngModel" name="TaiKhoan" ngModel placeholder="Tài khoản">
+
+    </div>
+    <div *ngIf="taikhoan.errors  && (taikhoan.touched || taikhoan.dirty)"> 
+            
+        <p *ngIf="taikhoan.errors.required" class="alert alert-danger"><i class="material-icons">error</i>Vui lòng nhập tài khoản <i class="fa fa-sort-asc"></i></p>
+    </div>
+    <div class="input-group mt-2">
+            <div class="icon_input">
+                    <i class="fa fa-lock"></i>
+                  </div>
+        <input type="text" class="form-control" required #matkhau="ngModel" name="MatKhau" ngModel placeholder="Password">
+    </div>
+    <div *ngIf="matkhau.errors  && (matkhau.touched || matkhau.dirty)"> 
+        <p *ngIf="matkhau.errors.required" class="alert alert-danger"><i class="material-icons">error</i>Vui lòng nhập password <i class="fa fa-sort-asc"></i></p>
+    </div>
+    <div class="input-group mt-2">
+            <div class="icon_input"><i class="fa fa-eercast"></i>
+                  </div>
+        <input type="text" class="form-control" required #hoten="ngModel" name="HoTen" ngModel placeholder="Họ Tên">
+    </div>
+    <div *ngIf="hoten.errors  && (hoten.touched || hoten.dirty)"> 
+        <p *ngIf="hoten.errors.required" class="alert alert-danger"><i class="material-icons">error</i>Vui lòng nhập họ tên <i class="fa fa-sort-asc"></i></p>
+    </div>
+    <div class="input-group mt-2">
+            <div class="icon_input">
+                    <i class="fa fa-envelope"></i>
+                  </div>
+        <input type="text" pattern="^[a-z][a-z0-9_\.]{5,32}@gmail.com$"  class="form-control" required #email="ngModel" name="Email" ngModel placeholder="Email">
+    </div>
+    <div *ngIf="email.errors  && (email.touched || email.dirty)"> 
+        <p *ngIf="email.errors.required" class="alert alert-danger"><i class="material-icons">error</i>Vui lòng nhập gmail <i class="fa fa-sort-asc"></i></p>
+        <p *ngIf="email.errors.pattern"class="alert alert-danger"><i class="material-icons">error</i>Gmail saii <i class="fa fa-sort-asc"></i></p>
+    </div>
+    <div class="input-group mt-2">
+            <div class="icon_input">
+                    <i class="fa fa-phone"></i>
+                  </div>
+        <input type="text"  class="form-control"pattern="\d*" required #sodt="ngModel" name="SoDT" ngModel placeholder="Phone number">
+    </div>
+    <div *ngIf="sodt.errors  && (sodt.touched || sodt.dirty)"> 
+        <p *ngIf="sodt.errors.required" class="alert alert-danger"><i class="material-icons">error</i>Vui lòng Số điện thoại <i class="fa fa-sort-asc"></i></p>
+        <p *ngIf="sodt.errors.pattern" class="alert alert-danger"><i class="material-icons">error</i>Chỉ được nhập số !! <i class="fa fa-sort-asc"></i></p>
+    </div>
+    <button class="btn btn-success mt-4">Đăng Ký</button>
+     
+    <p id="newAccount"> You have Account ? <span>→</span> </p>
+ 
+  </form>
+
+</div>

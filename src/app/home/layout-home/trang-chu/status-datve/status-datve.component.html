@@ -1,0 +1,56 @@
+<div class="container py-2 statusDatve" style="max-width: 940px;">
+  <div id="dropdownMenu" class="row">
+      <div id="dropdownMenu_item" class="dropdown px-3">
+          <div class=" " data-toggle="dropdown">
+              <div class="row m-0">
+                <div class=""> 
+                  <select class="form-control" name="" id="" (change)="selectMovie($event.target.value)" style="border: none"  >
+                    <option value="chonphim" class="">Phim</option>
+                    <option *ngFor="let movie of lstMovie" value="{{movie.MaPhim}}">{{movie.TenPhim}}</option>
+                  </select>
+                </div> 
+              </div>
+            </div> 
+             
+           
+      </div>
+    
+      <div id="dropdownMenu_item" class="dropdown px-3">
+        <div class=" " data-toggle="dropdown  ">
+          <div class="row m-0">
+            <div class=""> 
+              <select class="form-control" name="" id="" style="border: none" (change)="selectDay($event.target.value)"  >
+                <option value="chonphim">Ngày xem</option>
+                <option *ngFor="let lichchieu of LichChieu" value="{{lichchieu.MaLichChieu}}">{{lichchieu.NgayChieuGioChieu | date:'dd/MM/yyyy'}}</option>
+              </select>
+            </div> 
+          </div>
+        </div> 
+      </div>
+      <div id="dropdownMenu_item" class="dropdown px-3">
+        <div class=" " data-toggle="dropdown  ">
+          <div class="row m-0">
+            <div class=""> 
+              <select class="form-control" name="" id="" style="border: none" (change)="anableButtonBuyTitket($event.target.value)"  >
+                <option value="chongio">Giờ xem</option>
+                <option *ngFor="let giochieu of lstGioChieu" value="{{giochieu.MaLichChieu}}">{{giochieu.NgayChieuGioChieu | date:'hh:mm'}}</option>
+              </select>
+            </div> 
+          </div>
+        </div> 
+      </div>
+      <div class="Muave">
+        
+        <button class="btn btn-dark " style="    padding: 7px 25px;" disabled *ngIf="disableButton else enableButton">MUA VÉ NGAY</button>
+        <ng-template #enableButton>
+            <a routerLink="/home/trangdatve/{{malichchieu}}/{{maPhim}}">
+                <button class="btn btn-dark " style="    padding: 7px 25px;background: #fb4226;border-color:#fb4226">MUA VÉ NGAY</button>
+            </a>
+        </ng-template>
+        
+      </div>
+  </div>
+</div>
+
+
+

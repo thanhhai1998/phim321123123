@@ -1,0 +1,55 @@
+.row{
+    align-items: center;
+    justify-content: space-between;
+    span{
+        font-size: 15px;
+    }
+}
+.dropdown{
+    padding: 0;
+    width: 20%;
+    
+}
+.form-control{
+    cursor: pointer;
+}
+.statusDatve{
+    background: #fff;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 9; 
+    display: block;
+    border: solid 1px #fff;
+    margin: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,50%);
+    width: 100%; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    #dropdownMenu{
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        #dropdownMenu_item{
+            border-right: solid 1px #ddd; 
+            
+        }
+    }
+    .btn-outline-danger{
+        border-color: white; 
+    }
+    .Muave{
+        button{
+            box-shadow: none;
+        }
+    }
+    .dropdown-toggle{
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .statusDatve{
+        display: none;
+    }
+}

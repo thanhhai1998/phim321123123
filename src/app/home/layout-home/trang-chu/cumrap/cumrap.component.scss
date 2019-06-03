@@ -1,0 +1,138 @@
+
+            img{ 
+                cursor: pointer;
+                max-height: 50px;
+                max-width: 50px;
+                width: 100%;
+            }
+.CumRap_session{
+    margin-bottom: 40px; 
+    max-width: 940px; 
+    .Cumrap_content{
+        ul{ 
+            text-align: center;
+            li{
+                opacity: 0.5;
+                list-style: none; 
+               margin: auto; 
+               margin-left: 20px;
+               margin-right: 20px;
+               padding-top: 20px;
+               padding-bottom: 20px;
+               border-bottom: solid 1px #ddd;
+               border-color: rgba(238,238,238,.88);
+               
+                img{ 
+                }
+            }
+            li.active{
+                opacity: 1;
+            }
+        }
+        .Cumrap_item{ 
+            width: 10%;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            
+            border:  solid 1px #ddd;
+
+
+        }
+        .tenRap_content{
+            border:  solid 1px #ddd;
+            border-left: none;
+            font-size: 14px;
+            width: 30%;
+        }
+        .lichchieu_content{
+            border:  solid 1px #ddd;
+            border-left: none;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+    }
+}
+
+.lichchieu_content{
+    width: 60%; 
+    .time{
+        img{
+            margin-right: 35px;
+            margin-top: 7px;
+            width: 30px;
+            height: 26px;
+        }
+        span{
+            float: left;
+            width: 15%;
+            font-size: 22px;
+            font-weight: 600;
+            color: #417500;
+            margin: 0 5px 5px 0;
+            transition: all .2s;
+            text-decoration: none;
+            display: block;
+        
+        }
+    }
+              .rate{
+                font-size: 12px;
+                color: #9b9b9b;
+                padding-left: 65px;
+                font-weight: 600;
+              }
+               .lichchieu_item{
+                   cursor: pointer;
+               padding-top: 20px;
+               max-height: 133px;   
+               padding-bottom: 20px;
+               border-bottom: solid 1px #ddd;
+               margin-left: 20px;
+               margin-right: 20px; 
+               border-color: rgba(238,238,238,.88);
+               img{
+                   padding: 0;
+               }
+               .thongtinphim{ 
+                   padding: 0;
+                   align-items: center;
+                   span:nth-child(2){
+                       margin: 0;
+                       display: block;
+
+                       overflow: hidden;
+                       font-size: 14px;
+                       font-weight: 600;
+                   }
+                   span:first-child{
+                    background-color: #fb4226;
+                    color: #fff;
+                    display: block;
+                    border-radius: 4px;
+                    border:none;
+                    padding: 0 5px;
+                    float: left;
+                    margin-right: 5px;
+                    font-size: 12px;
+                   }
+               }
+               }
+}
+.layout_cumrap_img{
+    height: 120px;
+   
+    img{
+        width: 100%;
+        height: 100%;
+        max-height: unset;
+        max-width: unset;
+    }
+}
+@media screen and (max-width: 768px){
+    .CumRap_session{
+        display: none;
+    }
+    .layout_cumrap_img{
+        display: none;
+    }
+}

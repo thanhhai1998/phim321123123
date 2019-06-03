@@ -1,0 +1,9 @@
+.overlay_header{
+    height: 60px;
+}
+
+@media screen and (max-width:768px){
+    .overlay_header{
+        height: 70px;
+    }
+}

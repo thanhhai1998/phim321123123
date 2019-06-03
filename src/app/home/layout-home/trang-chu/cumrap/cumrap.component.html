@@ -1,0 +1,143 @@
+<div class="layout_cumrap container px-0" id="cumrap">
+  <div class="layout_cumrap_img row m-0">
+    <img style="" src="https://123phim.vn/app/assets/img/icons/back-news.png" alt="">
+  </div>
+</div>
+<div class="container CumRap_session px-0">
+  <div class="Cumrap_content row mx-0">
+    <div class="Cumrap_item  col-xs">
+      <ul class="p-0">
+        <li class="active">
+          <img src="https://s3img.vcdn.vn/123phim/2018/09/e520781386bd5436e94d6e15e193a005.png" class=""
+            (click)="ChonLoaiRap('Cinema')">
+        </li>
+       
+        <li>
+          <img src="../../../../../assets/image/img_cumrap/1721cfa98768f300c03792e25ceb0191.png" class=""
+            (click)="ChonLoaiRap('Cinestar')">
+        </li>
+        <li>
+          <img src="../../../../../assets/image/img_cumrap/404b8c4b80d77732e7426cdb7e24be20.png">
+        </li>
+        <li>
+        <img src="../../../../../assets/image/img_cumrap/7b078639bd8fdb09dd83652d207c7b90.png">
+        </li>
+        <li class="active">
+          <img src="https://s3img.vcdn.vn/123phim/2018/09/ee621ee05dcd4565caead4f29421b41e.png" class=""
+            (click)="ChonLoaiRap('Cinema')">
+        </li>
+        <li class="active">
+          <img src="https://s3img.vcdn.vn/123phim/2018/09/05db7612f4a6f0ee3db35b63528f3473.png" class=""
+            (click)="ChonLoaiRap('Cinema')">
+        </li>
+        <li class="active">
+          <img src="https://s3img.vcdn.vn/123phim/2018/09/9b240f96a233bb43203ee514a21a6004.png" class=""
+            (click)="ChonLoaiRap('Cinema')">
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="tenRap_content " [ngSwitch]="loairap">
+      <div class="Cinema" *ngSwitchCase="'Cinema'">
+        <app-cinema></app-cinema>
+      </div>
+      <div class="Cinestar" *ngSwitchCase="'Cinestar'">
+        <app-cinestar></app-cinestar>
+      </div>
+      <!-- <div class="tenRap_item row mx-0">
+        <img src="../../../../../assets/image/img_tenrap/galaxy-nguyen-du-15379626329832.jpg" alt="">
+        <div class="info_rap col-md-9">
+          <span>GLX - Nguyễn Du</span><br>
+          <span>116 Nguyễn Du, Q.1</span><br>
+          <a href="#">[chi tiết]</a>
+        </div>
+      </div>
+      <div class="tenRap_item row mx-0">
+        <img src="../../../../../assets/image/img_tenrap/galaxy-trung-chanh-15381048160387.jpg" alt="">
+        <div class="info_rap col-md-9">
+          <span>GLX - Nguyễn Du</span><br>
+          <span>116 Nguyễn Du, Q.1</span><br>
+          <a href="#">[chi tiết]</a>
+        </div>
+      </div>
+      <div class="tenRap_item row mx-0">
+        <img src="../../../../../assets/image/img_tenrap/galaxy-quang-trung-15381040745219.jpg" alt="">
+        <div class="info_rap col-md-9">
+          <span>GLX - Nguyễn Du</span><br>
+          <span>116 Nguyễn Du, Q.1</span><br>
+          <a href="#">[chi tiết]</a>
+        </div>
+      </div>
+      <div class="tenRap_item row mx-0">
+        <img src="../../../../../assets/image/img_tenrap/galaxy-pham-van-chi-15381059548289.jpg" alt="">
+        <div class="info_rap col-md-9">
+          <span>GLX - Nguyễn Du</span><br>
+          <span>116 Nguyễn Du, Q.1</span><br>
+          <a href="#">[chi tiết]</a>
+        </div>
+      </div>
+      <div class="tenRap_item row mx-0">
+        <img src="../../../../../assets/image/img_tenrap/galaxy-nguyen-van-qua-15381052937743.jpg" alt="">
+        <div class="info_rap col-md-9">
+          <span>GLX - Nguyễn Du</span><br>
+          <span>116 Nguyễn Du, Q.1</span><br>
+          <a href="#">[chi tiết]</a>
+        </div>
+      </div>
+      <div class="tenRap_item row mx-0">
+        <img src="../../../../../assets/image/img_tenrap/galaxy-tan-binh-15381063333729.jpg" alt="">
+        <div class="info_rap col-md-9">
+          <span>GLX - Nguyễn Du</span><br>
+          <span>116 Nguyễn Du, Q.1</span><br>
+          <a href="#">[chi tiết]</a>
+        </div>
+      </div>
+      <div class="tenRap_item row mx-0">
+        <img src="../../../../../assets/image/img_tenrap/galaxy-kinh-duong-vuong-15381065563489.jpg" alt="">
+        <div class="info_rap col-md-9">
+          <span>GLX - Nguyễn Du</span><br>
+          <span>116 Nguyễn Du, Q.1</span><br>
+          <a href="#">[chi tiết]</a>
+        </div>
+      </div>
+      <div class="tenRap_item row mx-0">
+        <img src="../../../../../assets/image/img_tenrap/galaxy-huynh-tan-phat-15381070102598.jpg" alt="">
+        <div class="info_rap col-md-9">
+          <span>GLX - Nguyễn Du</span><br>
+          <span>116 Nguyễn Du, Q.1</span><br>
+          <a href="#">[chi tiết]</a>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="lichchieu_content ">
+
+        <div class="lichchieu_item" *ngFor="let phim of dsphim | slice:0:4">
+         <a routerLink="/home/trangchitiet/{{phim.MaPhim}}" style="text-decoration: none;color:unset">
+            <div class="row m-0"> 
+                <img class="col-md-2" src={{phim.HinhAnh}} alt="">
+           
+            <div class="thongtinphim row m-0 col-md-10">
+                <div class="col-md-12">
+                    <span class="">
+                      C18
+                    </span>
+                    <span>{{phim.TenPhim}}</span>
+                </div>
+            </div>
+          </div>
+          <div class="rate">
+            <span>100 phút - 123Phim 9.3 - IMDb 8.7</span>
+          </div>
+          <div class="time row m-0">
+            <img src="https://123phim.vn/app/assets/img/icons/typeSession/2_0.png" alt=""><span>22:15</span>
+          </div>
+         </a>
+        </div>
+
+
+      
+    </div>
+  </div>
+</div>

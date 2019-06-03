@@ -1,0 +1,36 @@
+<span class="phim">
+  <div class="item_phim">
+    <div class="img_phim">
+
+      <img [src]="Itemphim.HinhAnh" alt="" style="max-width: 215px;max-height: 281px">
+      <div class="overlay">
+
+      </div>
+      <div class="btnPlay" data-toggle="modal" data-target="#trailer" (click)="emitTrailer()">
+        <img src="https://123phim.vn/app/assets/img/icons/play-video.png" alt="">
+
+      
+      </div>
+
+     
+    </div>
+    <p class="tenphim">{{Itemphim.TenPhim  | slicetext:'40'}}</p>
+    <span class="ngaychieu">{{Itemphim.NgayKhoiChieu | date:'dd/MM/yyyy'}}-{{Itemphim.DanhGia}} IMDb</span>
+    <button class="btnMuave" routerLink="/home/trangchitiet/{{Itemphim.MaPhim}}">MUA VÉ</button>
+
+  </div>
+  <span class="icon_left">
+    C18
+  </span>
+  <span class="rate">
+    <p class="m-0" style="font-weight:700">{{Itemphim.DanhGia}}</p>
+    <div class="star">
+      <img class="star_item" src="https://123phim.vn/app/assets/img/icons/star1.png">
+      <img class="star_item" src="https://123phim.vn/app/assets/img/icons/star1.png">
+      <img class="star_item" src="https://123phim.vn/app/assets/img/icons/star1.png">
+      <img class="star_item" src="https://123phim.vn/app/assets/img/icons/star1.png">
+      <img class="half" src="https://123phim.vn/app/assets/img/icons/star1.2.png">
+    </div>
+  </span>
+   
+</span>

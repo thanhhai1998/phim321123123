@@ -1,0 +1,42 @@
+.review_content{
+    .review_item img{
+        display: block;
+        width: 100%;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .review_bosung .review_item_content img{
+        border-radius: 4px;
+        cursor: pointer;
+    }
+}
+.review_item{
+    margin-bottom: 20px;
+    h5{
+        margin-top: 10px;
+        line-height: 20px; 
+    height: 42px;
+    font-size: 16px;
+    }
+    p{
+        margin: 0;
+        height: 55px;
+        overflow: hidden;
+        
+font-size: 13px;
+color: #4a4a4a;
+    }
+}
+.review_bosung{
+    p{
+        height: 44px;
+        line-height: 19px;
+    font-size: 16px;
+    overflow: hidden;
+    }
+}
+@media screen and (max-width:768px){
+    .icon_tintuc{
+        display: none
+    }
+}

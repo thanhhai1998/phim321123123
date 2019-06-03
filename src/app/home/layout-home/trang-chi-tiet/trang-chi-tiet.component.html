@@ -1,0 +1,396 @@
+  
+  <div class="modal show" id="trailer" style="">
+      <div class="modal-dialog">
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          
+    
+          <!-- Modal body --> 
+              <iframe [src]="trailer| safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          
+              <button type="button" class="close" style="color:white" data-dismiss="modal"><img src="https://123phim.vn/app/assets/img/icons/close.png" alt=""></button>
+          <!-- Modal footer -->
+      
+        </div>
+      </div>
+    </div>
+   
+<section class="info1 ">
+   <div class="background_img">
+     <img src="{{phim.HinhAnh}}" alt="">
+     <div class="btnPlay"  data-toggle="modal" data-target="#trailer">
+        <img src="https://123phim.vn/app/assets/img/icons/play-video.png" alt="">
+      </div>
+   </div>
+   <div class="styleGradient">
+     
+  </div>
+  <div class="chitietphim  row">
+
+     <div class="phim_img">
+        <img src="{{phim.HinhAnh}}" alt="">
+        <div class="btnPlay" data-toggle="modal" data-target="#trailer">
+          <img src="https://www.123phim.vn/app/assets/img/icons/play-video.png" alt="">
+        </div>
+
+     </div>
+     <div class="detail1 ">
+       <p class="day">{{phim.NgayKhoiChieu | date:'dd/MM/yyyy'}}</p>
+       <p class="name">
+         <span>C13</span>{{phim.TenPhim}}
+       </p>
+       <p class="time">183 phút - 9.1 IMDb - 2D/Digital/3D/IMAX/4DX</p>
+     
+          <button class="btnMuave " pageScroll  [pageScrollDuration]="400" href="#lichchieuphim"  mat-button>Mua vé</button> 
+     </div>
+ 
+        <div class="rate" >
+       
+ 
+            <span>{{phim.DanhGia}}</span>
+            <div class="slice">
+              <div class="bar"></div> 
+            </div>
+            <div class="star">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <img src="https://www.123phim.vn/app/assets/img/icons/star1.2.png" alt="">
+             
+            </div>
+            <div class="danhgia">
+              378 người đánh giá
+            </div>
+         </div>
+          
+  
+   
+     
+  </div>
+</section>
+<section class="info2">
+    <div class="detail_responsive">
+        <p class="day">{{phim.NgayKhoiChieu | date:'dd.MM.yyyy'}}</p>
+        <p class="name">
+         {{phim.TenPhim}}
+        </p>
+        <p class="time">183 phút - 9.1 IMDb - 2D/Digital/3D/IMAX/4DX</p>
+    </div>
+  <div class="info2_content" id="lichchieuphim">
+     <nav class="navbar"> 
+          <ul class="nav nav-pills mx-auto" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="pill" href="#home">Lịch chiếu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu1">Thông tin</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu2">Đánh giá</a>
+              </li>
+            </ul>
+          
+     </nav>
+          <!-- Nav pills -->
+          
+        
+          <!-- Tab panes -->
+          <div class="tab-content mt-5">
+            <div id="home" class="container tab-pane active tab1 "><br>
+              <div class="tenrap col-md-4">
+
+                  <img src="https://s3img.vcdn.vn/123phim/2018/09/e520781386bd5436e94d6e15e193a005.png" alt="">
+                  <span>Galaxy Cinema </span>
+              
+              </div>
+              <div class="lichchieu col-md-8">
+                 <div class="wrap">
+                    <ul class="nav nav-pills" >
+                       
+                        <li class="nav-item" *ngFor="let lichchieu of phim.LichChieu;let i=index" >
+                          <a class="nav-link " [ngClass]="{active:i==0}" data-toggle="pill" href="#lichchieu{{i+1}}">
+                            <div *ngIf="i==6 else ngaythuong">
+                              CN
+                            </div>
+                            <ng-template #ngaythuong>
+                                thứ {{i+2}}
+                            </ng-template>
+                            <p>{{lichchieu.NgayChieuGioChieu | date:'dd'}}</p></a>
+                        </li>
+                        <!-- <li class="nav-item">
+                          <a class="nav-link" data-toggle="pill" href="#lichchieu2">thứ 3 <p>30</p></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="pill" href="#lichchieu3">thứ 4 <p>31</p></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  " data-toggle="pill" href="#lichchieu4">thứ 5 <p>1</p></a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#lichchieu5">thứ 6 <p>2</p></a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#lichchieu6">thứ 7 <p>3</p></a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#lichchieu6">CN<p>4</p></a>
+                          </li> -->
+                      </ul>
+                      
+                 </div>
+                    <!-- Tab panes -->
+                    <div class="tab-content giochieu">
+                   
+                          <div *ngFor="let lichchieu of phim.LichChieu;let i=index" class="tab-pane container " [ngClass]="{active:i==0}" id="lichchieu{{i+1}}" >
+                        
+                              <div class="lichchieu_item mt-1">
+                                  <div class="row m-0"> 
+                                        <img class="col-md-2 m-0 p-0" src="https://s3img.vcdn.vn/123phim/2018/09/galaxy-nguyen-du-15379626329832.jpg" alt="">
+                                   
+                                    <div class="thongtinphim row m-0 col-md-10">
+                                        <div class="col-md-12">
+                                           
+                                            <span class="" style="    font-size: 14px;
+                                            line-height: 1.4;
+                                            color: #000;">GLX - Nguyễn Du</span>
+                                            <div class="rate">
+                                                <span>104 phút - 123Phim 8.7 - IMDb 7</span>
+                                              </div>
+                                        </div>
+                                        
+                                    </div>
+                                  </div>
+                                 
+                                  <div class="time row m-0 mt-3">
+                                    <img src="https://123phim.vn/app/assets/img/icons/typeSession/2_0.png" class="m-0 mr-4" style="height: 30px; width: 30px;" alt=""><span>
+
+                                        <a  routerLink="/home/trangdatve/{{lichchieu.MaLichChieu}}/{{phim.MaPhim}}"><span>{{lichchieu.NgayChieuGioChieu | date:'hh:mm'}}</span></a>
+                                
+                                    </span>
+                                  </div>
+                                </div>
+                            
+    
+                          </div>
+                  
+                          <div *ngFor="let lichchieu of phim.LichChieu;let i=index" class="tab-pane container " [ngClass]="{active:i==0}" id="lichchieu{{i+1}}" >
+                        
+                              <div class="lichchieu_item mt-1">
+                                  <div class="row m-0"> 
+                                        <img class="col-md-2 m-0 p-0" src="https://s3img.vcdn.vn/123phim/2018/09/galaxy-tan-binh-15381063333729.jpg" alt="">
+                                   
+                                    <div class="thongtinphim row m-0 col-md-10">
+                                        <div class="col-md-12">
+                                           
+                                            <span class="" style="    font-size: 14px;
+                                            line-height: 1.4;
+                                            color: #000;">GLX - Tân Bình</span>
+                                            <div class="rate">
+                                                <span>246 Nguyễn Hồng Đào, Tân Bình</span>
+                                              </div>
+                                        </div>
+                                        
+                                    </div>
+                                  </div>
+                                 
+                                  <div class="time row m-0 mt-3">
+                                    <img src="https://123phim.vn/app/assets/img/icons/typeSession/2_0.png" class="m-0 mr-4" style="height: 30px; width: 30px;" alt=""><span>
+
+                                        <a  routerLink="/home/trangdatve/{{lichchieu.MaLichChieu}}/{{phim.MaPhim}}"><span>{{lichchieu.NgayChieuGioChieu | date:'hh:mm'}}</span></a>
+                                
+                                    </span>
+                                  </div>
+                                </div>
+                            
+    
+                          </div>
+                            
+                          <div *ngFor="let lichchieu of phim.LichChieu;let i=index" class="tab-pane container " [ngClass]="{active:i==0}" id="lichchieu{{i+1}}" >
+                        
+                              <div class="lichchieu_item mt-1">
+                                  <div class="row m-0"> 
+                                        <img class="col-md-2 m-0 p-0" src="https://s3img.vcdn.vn/123phim/2018/09/galaxy-kinh-duong-vuong-15381065563489.jpg" alt="">
+                                   
+                                    <div class="thongtinphim row m-0 col-md-10">
+                                        <div class="col-md-12">
+                                           
+                                            <span class="" style="    font-size: 14px;
+                                            line-height: 1.4;
+                                            color: #000;">GLX - Kinh Dương Vương</span>
+                                            <div class="rate">
+                                                <span>718bis Kinh Dương Vương, Q.6</span>
+                                              </div>
+                                        </div>
+                                        
+                                    </div>
+                                  </div>
+                                 
+                                  <div class="time row m-0 mt-3">
+                                    <img src="https://123phim.vn/app/assets/img/icons/typeSession/2_0.png" class="m-0 mr-4" style="height: 30px; width: 30px;" alt=""><span>
+
+                                        <a  routerLink="/home/trangdatve/{{lichchieu.MaLichChieu}}/{{phim.MaPhim}}"><span>{{lichchieu.NgayChieuGioChieu | date:'hh:mm'}}</span></a>
+                                
+                                    </span>
+                                  </div>
+                                </div>
+                            
+    
+                          </div>
+                            
+                    </div>
+              </div> </div>
+            <div id="menu1" class="container tab-pane fade thongtinchitietphim "><br>
+              <div class="  left  ">
+                <table>
+                    <tr>
+                      <p   >
+                        Ngày phát hành
+                      </p>
+                      <th>
+                        26.04.2019
+                      </th>
+                    </tr>
+                    <tr>
+                      <p>
+                        Đạo diễn
+                      </p>
+                      <th>
+                        Anthony Russo, Joe Russo
+                      </th>
+                    </tr>
+                    <tr>
+                      <p>
+                        Diễn viên
+                      </p>
+                      <th>
+                        Robert Downey Jr., Josh Brolin, Scarlett Johansson, Karen Gillan, Evangeline Lilly, Bradley Cooper, Chris Hemsworth, Anthony Russo
+                      </th>
+                    </tr>
+                    <tr>
+                      <p  >
+                        Thể loại
+                      </p>
+                      <th>
+                        hành động, phiêu lưu, viễn tưởng
+                      </th>
+                    </tr>
+                    <tr>
+                      <p  >
+                        Định dạng 
+                      </p>
+                      <th>
+                        2D/Digital/3D/IMAX/4DX
+                      </th>
+                    </tr>
+                    <tr>
+                      <p>
+                        Quốc Gia SX
+                      </p>
+                      <th>
+                        Mỹ
+                      </th>
+                    </tr>
+                </table>
+              </div>
+              <div class=" right ">
+                <p>
+                  Nội dung
+                </p>
+                <p>
+                  {{phim.MoTa}}   </p>
+              </div>
+              <div class="trailer">
+                <p>Trailer & Hình Ảnh</p>
+                <img src="http://jmd.im/wp-content/uploads/2017/06/blackx_thumbnail.jpg" style="max-height: 400px" alt="">
+                <div class="btnPlay"  data-toggle="modal" data-target="#trailer">
+                  <img src="https://www.123phim.vn/app/assets/img/icons/play-video.png" alt="">
+                </div>
+
+              </div>
+              <div class="tintuc">
+                <p>Tin liên quan</p>
+                <div class="tintuc_content row ">
+                    <div class="tin1 tintuc_item col-md-4">
+                      <div class="hinhanh">
+                        <img src="https://s3img.vcdn.vn/123phim/2019/04/luom-ngay-45-qua-trung-phuc-sinh-cuc-y-nghia-trong-avengers-endgame-nao-15564866948533.jpg" alt="">
+                      </div>
+                      <div class="title">
+                        <p>Lượm ngay 45 quả trứng Phục Sinh cực ý nghĩa trong Avengers: End...</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fa fa-thumbs-o-up mr-2"></i><span>2</span>
+                        <i class="fa fa-comment-o mr-2 ml-4"></i><span>5</span>
+                      </div>
+                    </div>
+                    <div class="tin2 tintuc_item  col-md-4">
+                      <div class="hinhanh">
+                        <img src="https://s3img.vcdn.vn/123phim/2019/04/diem-lai-5-lan-thanos-dai-bai-trong-truyen-tranh-marvel-15561735652175.jpg" alt="">
+                      </div>
+                      <div class="title">
+                        
+                        <p>Cùng nhau điểm lại 5 lần Thanos đại bại trong comics trước thềm...</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fa fa-thumbs-o-up mr-2"></i><span>0</span>
+                        <i class="fa fa-comment-o mr-2 ml-4"></i><span>0</span>
+                      </div>
+                    </div>
+                    <div class="tin3 tintuc_item   col-md-4">
+                      <div class="hinhanh">
+                          <img src="https://s3img.vcdn.vn/123phim/2019/03/avengers-endgame-he-lo-mot-canh-moi-co-captain-marvel-gop-mat-15520376730060.jpg" alt="">
+                      </div>
+                      <div class="title">
+                        <p>
+                          Avengers: Endgame hé lộ một cảnh mới có Captain Marvel góp mặt</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fa fa-thumbs-o-up mr-2"></i><span>10</span>
+                        <i class="fa fa-comment-o mr-2 ml-4"></i><span>2</span>
+                      </div>
+                    </div>
+                </div>
+                <div class="btnXemthem">
+                  <button class="btn ">Xem thêm</button>
+                </div>
+              </div>
+            </div>
+            <div id="menu2" class="container tab-pane fade danhgiaphim"><br>
+              <div class="danhgia">
+                <div class="danhgia_content">
+                    <div class="nhapdanhgia">
+                        <div class="inputDanhgia">
+                            <textarea type="text" placeholder="nhập đánh giá của bạn"  class="form-control"></textarea>
+                          </div>
+                        <div class="row m-0 khungten">
+                            <div class="inputDanhgia">
+                                <input type="text" placeholder="nhập tên"  class="form-control">
+                              </div>
+                              <div class="inputDanhgia">
+                                  <input type="text" placeholder="Email của bạn(không bắt buộc)"  class="form-control">
+                                </div>
+                                <button class="btn btn-success">Gửi đánh giá</button>
+                        </div>
+                        
+                    </div>
+                    <div class="danhsachdanhgia">
+                        <div class="danhgia_item">
+                            <div class="ten row m-0">
+                                <i class="fa fa-user-circle"></i>
+                              <span>Thanh Hải</span>
+                            </div>
+                            <div class="noidung">
+                                Phim hoành tráng, triệu tập toàn bộ anh hùng xem cảm xúc thật
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>   
+            </div>
+          </div>  
+  </div>
+  
+</section>
+
+ 

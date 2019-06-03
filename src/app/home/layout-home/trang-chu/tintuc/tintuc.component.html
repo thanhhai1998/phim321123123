@@ -1,0 +1,57 @@
+<div class="layout_cumrap_img row m-0" >
+    <img style="" src="https://123phim.vn/app/assets/img/icons/back-news.png" alt="" style="max-height: 120px;width: 100%;height: 100%">
+  </div>
+
+<div class="container TinTuc px-0" id="tintuc">
+  <div class="row dieuHuong mx-0">
+    <div class="navbar text-center col-md-12 dieuHuong_content mb-4"> 
+      <ul class="nav  navCenter">
+        <li class="">
+          <a data-toggle="tab" (click)="ChonLoaiTin('dienanh')" class="active">Điện Ảnh 24h</a>
+          
+        </li>
+        <li>
+          <a data-toggle="tab" (click)="ChonLoaiTin('review')" >Review</a>
+          
+        </li>
+        <li>
+          <a data-toggle="tab" (click)="ChonLoaiTin('khuyenmai')">Khuyến Mãi</a>
+        
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="TinTuc_Info" [ngSwitch]="LoaiTin">
+    <div class="col-md-12 info_content  p-0" *ngSwitchCase="'dienanh'">
+      <app-dienanh24h></app-dienanh24h>
+    </div>
+    <div class="col-md-12 info_content  p-0" *ngSwitchCase="'review'">
+      <app-review></app-review>
+    </div>
+    <div class="col-md-12 info_content  p-0" *ngSwitchCase="'khuyenmai'">
+      <app-khuyenmai></app-khuyenmai>
+    </div>
+    <button class="btnXemthem" data-toggle="collapse" (click)="settimeout()" data-target="#xemthem">Xem Thêm</button>
+    <div id="xemthem" class="collapse row m-0">
+        <div class="col-md-6 xemthem_item">
+            <img src="https://s3img.vcdn.vn/123phim/2018/12/galaxy-mua-2-tang-1-15452724821145.png" alt="hinh_tintuc1" srcset="">
+            <h5>[Galaxy] Mua 2 tặng 1</h5>
+            <p>Siêu phẩm Bumblebee, phim gia đình Mary Poppins Returns, bom tấn Việt Hồn Papa Da Con Gái, phim kinh dị Xác </p>
+            <div class="icon_tintuc row m-0" style="align-items: center;font-size: 18px;color:#bbb;margin-top: 20px;">
+                <i class="fa fa-thumbs-o-up"></i> <span class="ml-2 mr-4">0</span> <i class="fa fa-comment-o"></i> <span class="ml-2">1</span>
+            </div>
+          </div>
+          <div class="col-md-6 xemthem_item">
+              <img src="https://s3img.vcdn.vn/123phim/2018/12/123phim-giam-30-khi-thanh-toan-qua-zalopay-15451968781712.jpg" alt="hinh_tintuc1" srcset="">
+              <h5>[123Phim] Giảm 30% khi thanh toán qua ZaloPay</h5>
+              <p>Đặt vé 123Phim, thanh toán ZaloPay, nhận ưu đãi ngất ngây.</p>
+              <div class="icon_tintuc row m-0" style="align-items: center;font-size: 18px;color:#bbb;margin-top: 20px;">
+                  <i class="fa fa-thumbs-o-up"></i> <span class="ml-2 mr-4">0</span> <i class="fa fa-comment-o"></i> <span class="ml-2">1</span>
+              </div>
+            </div>
+            <button class="btnXemthem" data-toggle="collapse" (click)="settimeout()" data-target="#xemthem">Thu gọn</button>
+   
+        </div>
+  </div>
+
+</div>

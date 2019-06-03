@@ -1,0 +1,71 @@
+.formDangnhap {
+  position: fixed;
+  transition: all 0.5s;
+  overflow: scroll;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  top: 0;
+  width: 26%;
+  z-index: 9999999 !important;
+  background: white;
+  height: 100%;
+  padding: 60px 20px;
+  text-align: center;
+   
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+/* Handle on hover */
+ 
+.clickhere{
+  color:#0678BC;
+  cursor: pointer;
+  border: 1px solid  #0678BC;
+  font-weight: 500;
+  padding: 5px 15px;
+  margin: 10px 0;
+  
+}
+.shown {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1054;
+}
+.hienformLogin {
+  left: 0;
+}
+.anformLogin {
+  left: -26%;
+}
+.back{
+  cursor: pointer;
+  font-size: 35px;
+  margin-top: 10px;
+  color:#fb4226;
+}
+@media screen and (max-width: 768px) {
+  .formDangnhap {
+      width: 100%;
+    }
+    .hienformLogin {
+      left: 0;
+    }
+    .anformLogin {
+      left: -100%;
+    }
+}

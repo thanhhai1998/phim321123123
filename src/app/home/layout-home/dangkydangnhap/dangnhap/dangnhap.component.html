@@ -1,0 +1,35 @@
+<div class="title dangnhap formDangnhap">
+  <h1>Login</h1>
+  
+  <form #formDangnhap="ngForm" class="example-form" (ngSubmit)="Dangnhap(formDangnhap.value,formDangnhap,'SpinnerButtonLogin')">
+
+   
+        <mat-form-field class="example-full-width">
+            <div class="icon_input">
+                <i class="fa fa-user-circle-o"></i>
+              </div>
+            <input matInput placeholder="User name"  #taikhoan="ngModel" name="TaiKhoan" ngModel required>
+          </mat-form-field>
+  
+     
+     <br>
+    <mat-form-field class="example-full-width">
+        <div class="icon_input">
+            <i class="fa fa-lock"></i>
+          </div>
+        <input matInput required type="password"  name="MatKhau" #matkhau="ngModel" ngModel
+        placeholder="Password">
+      </mat-form-field>
+    <button class="btn btn-success mt-4" type="submit" style="position: relative;max-width: 241px">Đăng Nhập
+        <ngx-spinner name="SpinnerButtonLogin" [fullScreen]="false" type="cube-transition" 
+        bdColor="white"
+        color="#fb4226"
+        size="small">
+        </ngx-spinner>
+    </button>
+    <label for="" class="a  m-3 animated  heartBeat " style="max-width: 241px;color:red" *ngIf="errLogin">*sai tài khoản hoặc mật khẩu</label>
+    <p id="newAccount"> To register new account <span>→</span> </p> 
+    
+  </form>
+
+</div>

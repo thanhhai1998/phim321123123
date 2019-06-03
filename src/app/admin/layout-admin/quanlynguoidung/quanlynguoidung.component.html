@@ -1,0 +1,247 @@
+<div class="QuanLyPhim pt-4">
+  <div class="container QuanLyPhim_content">
+    <h1 style="text-align: center; margin-bottom: 50px;" class="mt-5"> <i class="fa fa-user-circle-o mr-2"></i>Quản Lý
+      Người Dùng</h1>
+      <div class="input-group mb-5">
+        <input type="text" class="form-control" placeholder="Tìm Kiếm......." (input)="TimKiemNguoiDung($event.target.value)">
+      </div>
+    <div class="row mx-0">
+      <div class="col-md-4 px-0">
+        <h4 style="margin-bottom: 0"><i class="fa fa-list-alt mr-3"></i>Danh Sách Người Dùng</h4>
+      </div>
+      <div class="col-md-8 px-0 row">
+        <button class="btn btn-outline-success ml-auto" data-toggle="modal" data-target="#myModal">Thêm Người
+          Dùng</button>
+      </div>
+
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h2 class="modal-title">Thêm Người Dùng Mới</h2>
+              <button type="button" class="close" data-dismiss="modal" id="closeForm">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form #formThemNguoiDung="ngForm" (ngSubmit)="ThemMoiNguoiDung(formThemNguoiDung.value)">
+                <div class="form-group">
+                  <label for="">Tài Khoản</label>
+                  <input type="text" class="form-control" name="TaiKhoan" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="">Mật Khẩu</label>
+                  <input type="text" class="form-control" name="MatKhau" ngModel>
+
+                </div>
+                <div class="form-group">
+                  <label for="">Họ Tên</label>
+                  <input type="email" class="form-control" name="HoTen" ngModel>
+
+                </div>
+                <div class="form-group">
+                  <label for="">Email</label>
+                  <input type="email" class="form-control" name="Email" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="">Số Điện Thoại</label>
+                  <input type="text" class="form-control" name="SoDT" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="">Mã Nhóm</label>
+                  <input type="text" class="form-control" name="MaNhom" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="">Mã Loại Người Dùng</label>
+                  <input type="text" class="form-control" name="MaLoaiNguoiDung" ngModel>
+                </div>
+                <div class="form-group">
+                  <div class="row" style="justify-content: space-around">
+                    <button id="themP" type="button" class="btn btn-success col-md-4" type="Submit">Thêm Người
+                      Dùng</button>
+                    <button type="button" class="btn btn-danger col-md-4" id="dongForm">Dong</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Modal footer -->
+            <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        
+                      </div> -->
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <div class="table-responsive"> -->
+      <table class="table table-bordered mt-5 table-responsive w-100">
+        <thead class="thead-dark">
+          <tr>
+            <th>Tài Khoản</th>
+            <th>Họ Tên</th>
+            <th>Mật Khẩu</th>
+            <th>Email</th>
+            <th>Số Điện Thoại</th>
+            <th>Mã Nhóm</th>
+            <th>Mã Loại Người Dùng</th>
+            <th>Trạng Thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="NguoiDungResult.length !== 0 else DSTKNguoiDung">
+            <tr *ngFor="let nguoidung of NguoiDungResult">
+                <td style="word-wrap: break-word">{{nguoidung.TaiKhoan}}</td>
+                <td style="word-wrap: break-word">{{nguoidung.HoTen}}</td>
+                <td style="word-wrap: break-word">{{nguoidung.MatKhau}}</td>
+                <td style="word-wrap: break-word">{{nguoidung.Email}}</td>
+                <td style="word-wrap: break-word">{{nguoidung.SoDT}}</td>
+                <td style="word-wrap: break-word">{{nguoidung.MaNhom}}</td>
+                <td style="word-wrap: break-word">{{nguoidung.MaLoaiNguoiDung}}</td>
+                <td style="word-wrap: break-word">
+                  <button class="btn btn-info" data-toggle="modal" [attr.data-target]="'#id' + nguoidung.TaiKhoan">Sửa Người
+                    Dùng</button>
+    
+                  <div class="modal" [id]="'id' + nguoidung.TaiKhoan">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+    
+                        <!-- Modal Header -->
+                        <div class="modal-header" style="background-color: #ddd">
+                          <h2 class="modal-title">Cập Nhật Thông Tin Người Dùng</h2>
+                          <button type="button" class="close" data-dismiss="modal" id="closeForm">&times;</button>
+                        </div>
+    
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                          <form #formCapNhatND="ngForm" (ngSubmit)="SuaNguoiDung(formCapNhatND.value)">
+                            <div class="form-group">
+                              <label for="">Tài Khoản</label>
+                              <input type="text" class="form-control" name="taiKhoan" [(ngModel)]="nguoidung.TaiKhoan">
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mật Khẩu</label>
+                              <input type="text" class="form-control" name="matKhau" [(ngModel)]="nguoidung.MatKhau">
+    
+                            </div>
+                            <div class="form-group">
+                              <label for="">Họ Tên</label>
+                              <input type="email" class="form-control" name="hoTen" [(ngModel)]="nguoidung.HoTen">
+    
+                            </div>
+                            <div class="form-group">
+                              <label for="">Email</label>
+                              <input type="email" class="form-control" name="email" [(ngModel)]="nguoidung.Email">
+                            </div>
+                            <div class="form-group">
+                              <label for="">Số Điện Thoại</label>
+                              <input type="text" class="form-control" name="soDT" [(ngModel)]="nguoidung.SoDT">
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mã Nhóm</label>
+                              <input type="text" class="form-control" name="maNhom" [(ngModel)]="nguoidung.MaNhom">
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mã Loại Người Dùng</label>
+                              <input type="text" class="form-control" name="maloaiNguoiDung"
+                                [(ngModel)]="nguoidung.MaLoaiNguoiDung">
+                            </div>
+                            <div class="form-group">
+                              <div class="row" style="justify-content: space-around">
+                                <button class="btn btn-success col-md-4" type="Submit">Cập Nhật</button>
+                                <button type="button" class="btn btn-danger col-md-4" id="dongForm">Dong</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <button class="btn btn-danger" (click)="XoaNguoiDung(nguoidung.TaiKhoan)">Xóa Người Dùng</button>
+                </td>
+    
+              </tr>
+            </ng-container>
+            <ng-template #DSTKNguoiDung>
+                <tr *ngFor="let nguoidung of DSNguoiDung">
+                    <td style="word-wrap: break-word">{{nguoidung.TaiKhoan}}</td>
+                    <td style="word-wrap: break-word">{{nguoidung.HoTen}}</td>
+                    <td style="word-wrap: break-word">{{nguoidung.MatKhau}}</td>
+                    <td style="word-wrap: break-word">{{nguoidung.Email}}</td>
+                    <td style="word-wrap: break-word">{{nguoidung.SoDT}}</td>
+                    <td style="word-wrap: break-word">{{nguoidung.MaNhom}}</td>
+                    <td style="word-wrap: break-word">{{nguoidung.MaLoaiNguoiDung}}</td>
+                    <td style="word-wrap: break-word">
+                      <button class="btn btn-info" data-toggle="modal" [attr.data-target]="'#id' + nguoidung.TaiKhoan">Sửa Người
+                        Dùng</button>
+        
+                      <div class="modal" [id]="'id' + nguoidung.TaiKhoan">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+        
+                            <!-- Modal Header -->
+                            <div class="modal-header" style="background-color: #ddd">
+                              <h2 class="modal-title">Cập Nhật Thông Tin Người Dùng</h2>
+                              <button type="button" class="close" data-dismiss="modal" id="closeForm">&times;</button>
+                            </div>
+        
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                              <form #formCapNhatND="ngForm" (ngSubmit)="SuaNguoiDung(formCapNhatND.value)">
+                                <div class="form-group">
+                                  <label for="">Tài Khoản</label>
+                                  <input type="text" class="form-control" name="taiKhoan" [(ngModel)]="nguoidung.TaiKhoan">
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Mật Khẩu</label>
+                                  <input type="text" class="form-control" name="matKhau" [(ngModel)]="nguoidung.MatKhau">
+        
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Họ Tên</label>
+                                  <input type="email" class="form-control" name="hoTen" [(ngModel)]="nguoidung.HoTen">
+        
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Email</label>
+                                  <input type="email" class="form-control" name="email" [(ngModel)]="nguoidung.Email">
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Số Điện Thoại</label>
+                                  <input type="text" class="form-control" name="soDT" [(ngModel)]="nguoidung.SoDT">
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Mã Nhóm</label>
+                                  <input type="text" class="form-control" name="maNhom" [(ngModel)]="nguoidung.MaNhom">
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Mã Loại Người Dùng</label>
+                                  <input type="text" class="form-control" name="maloaiNguoiDung"
+                                    [(ngModel)]="nguoidung.MaLoaiNguoiDung">
+                                </div>
+                                <div class="form-group">
+                                  <div class="row" style="justify-content: space-around">
+                                    <button class="btn btn-success col-md-4" type="Submit">Cập Nhật</button>
+                                    <button type="button" class="btn btn-danger col-md-4" id="dongForm">Dong</button>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+        
+                      <button class="btn btn-danger" (click)="XoaNguoiDung(nguoidung.TaiKhoan)">Xóa Người Dùng</button>
+                    </td>
+        
+                </tr>
+            </ng-template>
+          
+
+        </tbody>
+      </table>

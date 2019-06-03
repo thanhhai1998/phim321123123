@@ -1,0 +1,151 @@
+
+<div class="header">
+  <nav class="navbar navbar-expand-md  text-center justify-content-center row m-0"
+    style="justify-content: space-between">
+    <!-- Brand -->
+    <a class="navbar-brand col-md-3 text-left " routerLink="/home">
+      <img src="https://123phim.vn/app/assets/img/icons/web-logo.png" style="max-height: 50px;max-width: 50px;"
+        class="ml-1" alt="LoGo">
+    </a>
+
+
+    <!-- Links -->
+    <nav class="text-center m-auto row m-0 col-md-6" style="justify-content: space-between">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link"pageScroll [routerLink]="['/home']" [pageScrollDuration]="400" href="#lichchieu">Lịch Chiếu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"pageScroll [routerLink]="['/home']"[pageScrollDuration]="400" href="#cumrap">Cụm Rạp</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" pageScroll [routerLink]="['/home']"[pageScrollDuration]="400" href="#tintuc">Tin Tức</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  pageScroll [routerLink]="['/home']"[pageScrollDuration]="400" href="#quangcao">Quảng Cáo</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Dropdown -->
+    <div class="navbar-nav  DangNhap col-md-3   mr-auto text-right  row" style="align-items: center;display: inline;
+    
+    ">
+      <li class="nav-item mr-3" style="display: inline;">
+        <div *ngIf="isLoginSuccess else notLogin" style="position: relative;display: inline;">
+
+          <a style="cursor: pointer; color:#fb4226" (click)="showMenuUser()" class="pr-3"><i
+              class="fa fa-user-circle mr-3 "></i>{{nameUser}}</a>
+          <div class="dropdown-menu show menuUser" *ngIf="isShowMenuUser">
+            <ul class="m-0">
+
+              <li>
+                <span style="" class="p-0" (click)="dangxuat()" style="cursor: pointer"> Đăng xuất <i
+                    class=" ml-2 fa fa-sign-out"></i></span>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+        <ng-template #notLogin>
+
+          <a (click)="openFormLogin()" style="cursor: pointer;color: #A4A4A4" class=" pr-3"><i
+              class="fa fa-user-circle mr-3"></i>Đăng nhập</a>
+        </ng-template>
+      </li> 
+      <li class="nav-item" style="display: inline;border: none">
+        <span style="cursor: pointer;color: #A4A4A4" (click)="showmenuSearch()"><i class="fa fa-search" aria-hidden="true"></i></span>
+     
+      </li>
+    </div>
+  </nav>
+
+</div>
+<div class="header_mobile">
+  <div class="header_mobile_content row m-0 ">
+    <div class="menu_left pl-3">
+      <img src="https://123phim.vn/app/assets/img/icons/menu-options.png"  routerLink="/home" (click)="showWrapMenu()"alt="">
+      <div class="wrapmenu" [ngStyle]="{'transform':isShowWrapMenu ? 'translateX(0)':'translateX(-100%)'}">
+          <ul>
+            <li><a (click)="showWrapMenu()" class="row m-0" pageScroll [routerLink]="['/home']" [pageScrollDuration]="400" href="#lichchieu"><span>Lịch Chiếu</span><i class="fa fa-angle-right" style="font-size: 23px"></i></a></li>
+            <li><a (click)="showWrapMenu()" class="row m-0"pageScroll [routerLink]="['/home']" [pageScrollDuration]="400" href="#cumrap"><span>Cụm Rạp</span><i class="fa fa-angle-right" style="font-size: 23px"></i></a></li>
+            <li><a (click)="showWrapMenu()" class="row m-0"pageScroll [routerLink]="['/home']" [pageScrollDuration]="400" href="#tintuc"><span>Tin Tức</span><i class="fa fa-angle-right" style="font-size: 23px"></i></a></li>
+            <li><a (click)="showWrapMenu()" class="row m-0"pageScroll [routerLink]="['/home']" [pageScrollDuration]="400" href="#quangcao"><span>Ứng Dụng</span><i class="fa fa-angle-right" style="font-size: 23px"></i></a></li>
+            <li><a   class="row m-0"><span>Hồ Chí Minh</span></a></li>
+          </ul>
+      </div>
+      <div class="overlay_wrapmenu" *ngIf="isShowWrapMenu" (click)="showWrapMenu()">
+
+      </div>
+    </div>
+    <a class="logo_header " routerLink="/home">
+      <img src="https://123phim.vn/app/assets/img/icons/web-logo.png" style="max-height: 50px;max-width: 50px;"
+        class="ml-1" alt="LoGo">
+    </a>
+    <div class="Dangnhap pr-3">
+      
+ 
+    <div *ngIf="isLoginSuccess else notLogins" style="position: relative;display: inline;">
+
+        <a style="cursor: pointer; color:#fb4226;font-size: 16px" (click)="showMenuUser()"><i
+            class="fa fa-user-circle mr-3 " style="font-size: 25px"></i></a>
+        <div class="dropdown-menu show menuUser" *ngIf="isShowMenuUser">
+          <ul class="m-0">
+  
+            <li>
+              <span style="" class="p-0" (click)="dangxuat()"> Đăng xuất <i class=" ml-2 fa fa-sign-out"></i></span>
+            </li>
+  
+          </ul>
+        </div>
+      </div>
+      <ng-template #notLogins>
+        <i class="fa fa-user-circle" (click)="openFormLogin()" style="cursor: pointer;"></i>
+      </ng-template>
+    </div>
+
+
+
+ 
+
+
+  </div>
+
+</div>
+<app-dangkydangnhap [isShowFormLogin]="showFormLogin" (evtCloseFormLogin)="closeLoginForm($event)"
+  (evtLoginSuccess)="getUserName($event)"></app-dangkydangnhap>
+  <div class="overlay_wrapmenuSearch" *ngIf="isShowmenuSearch" (click)="showmenuSearch()">
+
+      </div>
+<div class="searchMovie" [ngClass]="{show:isShowmenuSearch}">
+    
+  <h3 style="text-align: left" class="txtTimkiem">
+    Tìm kiếm
+    <button class=""(click)="showmenuSearch()" ><i class="fa fa-times"></i></button>
+  </h3>
+  <form class="example-form">
+    <mat-form-field class="example-full-width"style="width: 100%">
+      <input matInput placeholder="Nhập tên phim muốn tìm..."  (input)="searchMovie($event.target.value)"  >
+      
+    </mat-form-field>
+    </form>
+
+  <div class="searchResult">
+      <p *ngIf="soketqua !== 0">Tìm thấy {{soketqua}}  kết quả</p>
+  
+          <a class="row item m-0 item_search" routerLink="/home/trangchitiet/{{phim.MaPhim}}" (click)="showmenuSearch()" *ngFor="let phim of searchResult">
+            
+              <img src="{{phim.HinhAnh}}" class="col-2 col-md-2 p-0" alt="">
+              <div class="info col-9 col-md-9 p-0 pl-2">
+                <p class="name">{{phim.TenPhim}}</p>
+                <div class="row m-0">
+                  <img src="https://123phim.vn/app/assets/img/icons/menu-options.png" alt="">
+                  <span class="ml-1">Xem chi tiết</span>
+                </div>
+              </div>
+            </a>
+      
+     
+  </div>
+  
+</div>

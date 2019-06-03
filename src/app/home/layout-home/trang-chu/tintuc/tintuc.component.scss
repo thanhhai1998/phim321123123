@@ -1,0 +1,100 @@
+.TinTuc{
+    max-width: 940px;
+    .btnXemthem{
+        font-size: 14px;
+        color: #949494; 
+        border: 1px solid #949494;
+        border-radius: 4px;
+        text-align: center;
+        background: 0 0;
+        padding: 7px 25px;
+        transition: all .2s;
+        margin: auto;
+        margin-top: 35px;
+        margin-bottom: 35px;
+        display: block;
+        &:hover{
+            background: #fa5238;
+            border-color: #fa5238;
+            color:white;
+        }
+    }
+    .dieuHuong{
+        .btn{
+            box-shadow: none;
+        }
+    }
+    ul{ 
+        margin: auto;
+    }
+    ul li a{
+         height: 24px;
+         font-size: 20px;
+         cursor: pointer;
+         padding: 10px 15px;
+         line-height: 24px;
+         transition:all 0.5s     ;
+         -webkit-transition:all 0.5s     ;
+         -moz-transition:all 0.5s     ;
+         -ms-transition:all 0.5s     ;
+         -o-transition:all 0.5s     ;
+         font-weight: 500;
+}
+    ul li{
+        
+    }
+    ul li a:hover{
+        font-size: 24px;
+    }
+    ul li a.active{
+        color: #fa5238;   font-size: 24px; 
+        transition:all 0.5s     ;
+        -webkit-transition:all 0.5s     ;
+        -moz-transition:all 0.5s     ;
+        -ms-transition:all 0.5s     ;
+        -o-transition:all 0.5s     ;
+    }
+}
+.xemthem_item{
+    margin-bottom: 20px;
+    img{
+        width: 100%;
+    }
+    h5{
+        margin-top: 10px;
+        line-height: 20px; 
+    height: 42px;
+    font-size: 16px;
+    }
+    p{
+        margin: 0;
+        height: 55px;
+        overflow: hidden;
+        
+font-size: 13px;
+color: #4a4a4a;
+    }
+}
+@media screen and (max-width:768px){
+    .layout_cumrap_img{}
+    .TinTuc{
+        .btnXemthem{
+            display: none;
+        }
+        ul li a{
+            height: 20px;
+            font-size: 16px;
+         
+            padding: 6px 10px;
+    }
+       ul li{
+           
+       }
+       ul li a:hover{
+           font-size: 20px;
+       }
+       ul li a.active{
+    font-size: 20px;  
+       }
+    }
+}

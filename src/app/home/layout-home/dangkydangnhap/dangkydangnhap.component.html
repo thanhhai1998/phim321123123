@@ -1,0 +1,78 @@
+
+<div class="shown" *ngIf="isShowFormLogin"  (click)="closeFormLogin()">
+
+</div>
+  
+<section class="formDangnhap" [ngClass]="{hienformLogin:isShowFormLogin,anformLogin:!isShowFormLogin}">
+<div *ngIf="dangnhap else DK">
+  
+  <app-dangnhap (evtLogin)="loginSuccess($event)"></app-dangnhap>
+  
+  <a  (click)="chuyenDangNhapvsDangKy()" class="clickhere "  style="color:#0678BC" > Click Here</a>
+  <p  (click)="closeFormLogin()" class="back animated infinite pulse delay-2s"><i class="fa fa-sign-out"></i></p>
+</div>
+<ng-template #DK>
+    <app-dangky></app-dangky>
+    <a  (click)="chuyenDangNhapvsDangKy()" class="clickhere " style="color:#0678BC" > Click Here</a>
+    <p  (click)="closeFormLogin()" class="back animated infinite pulse delay-2s"><i class="fa fa-sign-out"></i></p> 
+</ng-template>
+
+</section>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+<div class="shown" *ngIf="isShowFormLogin"  (click)="closeFormLogin()">
+
+</div>
+  
+<section class="formDangnhap" [ngClass]="{hienformLogin:isShowFormLogin,anformLogin:!isShowFormLogin}">
+
+<div class="title dangnhap" *ngIf="dangnhap else DK">
+<h1>Login</h1>
+<form #formDangnhap>
+  <div class="input-group">
+      <input type="text" class="form-control" placeholder="User name">
+
+  </div>
+  <div class="input-group mt-2">
+    
+      <input type="text" class="form-control" placeholder="Password">
+  </div>
+  <button class="btn btn-success mt-4">Đăng Nhập</button>
+  
+  <p id="newAccount"> To register new account <span>→</span> <a  (click)="chuyenDangNhapvsDangKy()" > Click Here</a></p>
+
+  <p  (click)="closeFormLogin()" class="back"><i class="fa fa-sign-out"></i></p>  
+</form>
+
+</div>
+<ng-template #DK>
+    <app-dangky></app-dangky>
+</ng-template>
+
+</section>    -->

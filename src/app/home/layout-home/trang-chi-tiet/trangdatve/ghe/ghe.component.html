@@ -1,0 +1,10 @@
+<ng-container *ngIf="!itemGhe.Ghe.DaDat else gheDaDuocChon">
+    <button (click)="datghe()" [ngStyle]="{'background': itemGhe.status ? '#44c020':'#cecece'}" >
+        <span *ngIf="itemGhe.status ">{{itemGhe.Ghe.TenGhe}}</span>
+    </button>
+</ng-container>
+<ng-template #gheDaDuocChon>
+    <button class=" btn-danger" disabled>
+        <span ><img src="https://www.123phim.vn/app/assets/img/icons/notchoose.png" alt=""></span>
+    </button>
+</ng-template>

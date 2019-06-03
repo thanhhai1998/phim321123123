@@ -1,0 +1,275 @@
+<div class="QuanLyPhim pt-4">
+  <div class="container QuanLyPhim_content">
+    <h1 style="text-align: center; margin-bottom: 50px;" class="mt-5"> <i class="fa fa-film mr-3"></i>Quản Lý Phim</h1>
+    <div class="input-group mb-5">
+      <input type="text" class="form-control" placeholder="Tìm Kiếm......." (input)="TimKiem($event.target.value)">
+     
+    </div>
+    <div class="row mx-0">
+      <div class="col-md-4 px-0">
+        <h4 style="margin-bottom: 0"><i class="fa fa-list-alt mr-3"></i>Danh Sách Phim</h4>
+      </div>
+      <div class="col-md-8 px-0 row">
+        <button class="btn btn-outline-success ml-auto" data-toggle="modal" data-target="#myModalThem">Thêm
+          Phim</button>
+      </div>
+      <div class="modal" id="myModalThem">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h2 class="modal-title">Thêm Phim Mới</h2>
+              <button type="button" class="close" data-dismiss="modal" id="closeForm">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form #formThemPhim="ngForm" (ngSubmit)="ThemPhimMoi(formThemPhim.value)">
+                <div class="form-group">
+                  <label for="">Mã Phim</label>
+                  <input type="text" class="form-control" name="maPhim" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="">Tên Phim</label>
+                  <input type="text" class="form-control" name="tenPhim" ngModel>
+
+                </div>
+                <div class="form-group">
+                  <label for="">Trailer </label>
+                  <input type="email" class="form-control" name="trailer" ngModel>
+
+                </div>
+                <div class="form-group">
+                  <label for="">Hình Ảnh</label>
+                  <input type="email" class="form-control" name="hinhAnh" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="">Mô Tả</label>
+                  <input type="text" class="form-control" name="moTa" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="">Mã Nhóm</label>
+                  <input type="text" class="form-control" name="maNhom" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="">Ngày Khởi Chiếu</label>
+                  <input type="text" class="form-control" name="ngayKhoiChieu" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="">Đánh Giá</label>
+                  <input type="text" class="form-control" name="danhGia" ngModel>
+                </div>
+                <div class="form-group">
+                  <div class="row" style="justify-content: space-around">
+                    <button id="themP" class="btn btn-success col-md-4" type="Submit">Thêm Phim</button>
+                    <button type="button" class="btn btn-danger col-md-4" id="dongForm" data-dismiss="modal">Dong</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Modal footer -->
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              
+            </div> -->
+
+          </div>
+        </div>
+      </div>
+      <!-- <div class="table-responsive"> -->
+      <table class="table table-bordered mt-5 table-responsive">
+        <thead class="thead-dark">
+          <tr>
+            <th>Hình Ảnh</th>
+            <th>Mã Phim</th>
+            <th>Tên Phim</th>
+            <th>Mô Tả</th>
+            <th>Mã Nhóm</th>
+            <th>Ngày Khởi Chiếu</th>
+            <th>Đánh Giá</th>
+            <th>Trạng Thái</th>
+          </tr>
+        </thead>
+        <tbody id="tbody_content">
+            <ng-container *ngIf="SearchResult.length !== 0 else DSServer ">
+                <tr *ngFor="let QLPhim of SearchResult">
+                    <td><img [src]="QLPhim.HinhAnh" alt="">
+                    </td>
+                    <td style="word-wrap: break-word">{{QLPhim.MaPhim}}
+                    </td>
+                    <td style="word-wrap: break-word">{{QLPhim.TenPhim}}
+                    </td>
+                    <td style="word-wrap: break-word">{{QLPhim.MoTa}}
+                    </td>
+                    <td style="word-wrap: break-word">{{QLPhim.MaNhom}}
+                    </td>
+                    <td style="word-wrap: break-word">{{QLPhim.NgayKhoiChieu}}
+                    </td>
+                    <td style="word-wrap: break-word">{{QLPhim.DanhGia}}
+                    </td>
+                    <td>
+                      <button class="btn btn-info" data-toggle="modal" [attr.data-target]="'#id' + QLPhim.MaPhim">Sửa Phim
+                      </button>
+                      <div class="modal" [id]="'id'+ QLPhim.MaPhim">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+        
+                            <!-- Modal Header -->
+                            <div class="modal-header" style="background-color:#ddd">
+                              <h2 class="modal-title">Cập Nhật Thông Tin Phim</h2>
+                              <button type="button" class="close" data-dismiss="modal" id="closeForm">&times;</button>
+                            </div>
+        
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                              <form #formSuaPhim="ngForm" (ngSubmit)="CapNhatPhim(formSuaPhim.value)">
+                                <div class="form-group">
+                                  <label for="">Mã Phim</label>
+                                  <input type="text" class="form-control" name="maPhim" [(ngModel)]="QLPhim.MaPhim">
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Tên Phim</label>
+                                  <input type="text" class="form-control" name="tenPhim" [(ngModel)]="QLPhim.TenPhim">
+        
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Trailer </label>
+                                  <input type="email" class="form-control" name="trailer" [(ngModel)]="QLPhim.Trailer">
+        
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Hình Ảnh</label>
+                                  <input type="email" class="form-control" name="hinhAnh" [(ngModel)]="QLPhim.HinhAnh">
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Mô Tả</label>
+                                  <input type="text" class="form-control" name="moTa" [(ngModel)]="QLPhim.MoTa">
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Mã Nhóm</label>
+                                  <input type="text" class="form-control" name="maNhom" [(ngModel)]="QLPhim.MaNhom">
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Ngày Khởi Chiếu</label>
+                                  <input type="text" class="form-control" name="ngayKhoiChieu"
+                                    [(ngModel)]="QLPhim.NgayKhoiChieu">
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Đánh Giá</label>
+                                  <input type="text" class="form-control" name="danhGia" [(ngModel)]="QLPhim.DanhGia">
+                                </div>
+                                <div class="form-group">
+                                  <div class="row" style="justify-content: space-around">
+                                    <button id="suaP" class="btn btn-success col-md-4" type="Submit"> Update Phim
+                                    </button>
+                                    <button type="button" class="btn btn-danger col-md-4" id="dongForm">Dong</button>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button class="btn btn-danger" (click)="XoaPhim(QLPhim.MaPhim)">Xóa Phim</button>
+                    </td>
+                  </tr>
+            </ng-container>
+            
+          <ng-template #DSServer>
+              <tr *ngFor="let QLPhim of DSQLPhim">
+                  <td><img [src]="QLPhim.HinhAnh" alt="">
+                  </td>
+                  <td style="word-wrap: break-word">{{QLPhim.MaPhim}}
+                  </td>
+                  <td style="word-wrap: break-word">{{QLPhim.TenPhim}}
+                  </td>
+                  <td style="word-wrap: break-word">{{QLPhim.MoTa}}
+                  </td>
+                  <td style="word-wrap: break-word">{{QLPhim.MaNhom}}
+                  </td>
+                  <td style="word-wrap: break-word">{{QLPhim.NgayKhoiChieu}}
+                  </td>
+                  <td style="word-wrap: break-word">{{QLPhim.DanhGia}}
+                  </td>
+                  <td>
+                    <button class="btn btn-info" data-toggle="modal" [attr.data-target]="'#id' + QLPhim.MaPhim">Sửa Phim
+                    </button>
+                    <div class="modal" [id]="'id'+ QLPhim.MaPhim">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+      
+                          <!-- Modal Header -->
+                          <div class="modal-header" style="background-color:#ddd">
+                            <h2 class="modal-title">Cập Nhật Thông Tin Phim</h2>
+                            <button type="button" class="close" data-dismiss="modal" id="closeForm">&times;</button>
+                          </div>
+      
+                          <!-- Modal body -->
+                          <div class="modal-body">
+                            <form #formSuaPhim="ngForm" (ngSubmit)="CapNhatPhim(formSuaPhim.value)">
+                              <div class="form-group">
+                                <label for="">Mã Phim</label>
+                                <input type="text" class="form-control" name="maPhim" [(ngModel)]="QLPhim.MaPhim">
+                              </div>
+                              <div class="form-group">
+                                <label for="">Tên Phim</label>
+                                <input type="text" class="form-control" name="tenPhim" [(ngModel)]="QLPhim.TenPhim">
+      
+                              </div>
+                              <div class="form-group">
+                                <label for="">Trailer </label>
+                                <input type="email" class="form-control" name="trailer" [(ngModel)]="QLPhim.Trailer">
+      
+                              </div>
+                              <div class="form-group">
+                                <label for="">Hình Ảnh</label>
+                                <input type="email" class="form-control" name="hinhAnh" [(ngModel)]="QLPhim.HinhAnh">
+                              </div>
+                              <div class="form-group">
+                                <label for="">Mô Tả</label>
+                                <input type="text" class="form-control" name="moTa" [(ngModel)]="QLPhim.MoTa">
+                              </div>
+                              <div class="form-group">
+                                <label for="">Mã Nhóm</label>
+                                <input type="text" class="form-control" name="maNhom" [(ngModel)]="QLPhim.MaNhom">
+                              </div>
+                              <div class="form-group">
+                                <label for="">Ngày Khởi Chiếu</label>
+                                <input type="text" class="form-control" name="ngayKhoiChieu"
+                                  [(ngModel)]="QLPhim.NgayKhoiChieu">
+                              </div>
+                              <div class="form-group">
+                                <label for="">Đánh Giá</label>
+                                <input type="text" class="form-control" name="danhGia" [(ngModel)]="QLPhim.DanhGia">
+                              </div>
+                              <div class="form-group">
+                                <div class="row" style="justify-content: space-around">
+                                  <button id="suaP" class="btn btn-success col-md-4" type="Submit"> Update Phim
+                                  </button>
+                                  <button type="button" class="btn btn-danger col-md-4" id="dongForm">Dong</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-danger" (click)="XoaPhim(QLPhim.MaPhim)">Xóa Phim</button>
+                  </td>
+              </tr>
+          </ng-template>
+          
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Nhân đẹp trai 
+  cho hoi ong vua xai cai gi vay ong nhan
+cai modal cua bootstrap ong de no chung 1 cai id thi khi goi ra no chi ra cai dau tien thoy
+  chua hieu lam ta -->

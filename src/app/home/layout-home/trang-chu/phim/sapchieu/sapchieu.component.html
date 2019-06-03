@@ -1,0 +1,40 @@
+<!-- <owl-carousel [options]="mySlideOptions" [carouselClasses]="['owl-theme','row', 'sliding']" >
+  <div ngbSlide class="col-md-3 item card m-0" style="max-width: none;" *ngFor="let Phim of DanhSachPhimDangChieu | slice:0:8">
+    <app-item-phim [Itemphim]=Phim></app-item-phim>
+</div>
+ </owl-carousel> -->
+  <!-- <owl-carousel
+     [options]="{items: 3, dots: false, navigation: false}" 
+     [items]="images" 
+     [carouselClasses]="['owl-theme', 'row', 'sliding']">
+     <div ngbSlide class="col-md-3 p-0 item card m-0" style="" *ngFor="let Phim of DanhSachPhimDangChieu | slice:0:8">
+      <app-item-phim [Itemphim]=Phim></app-item-phim>
+  </div>
+ </owl-carousel> -->
+ 
+ <div class="row PhimDangChieu_content owl-carousel owl-theme m-0">
+    <div ngbSlide class="col-md-3 item card m-auto" style="max-width: 215px; padding: 2px" *ngFor="let Phim of DanhSachPhimSapChieu ">
+        <app-item-phim [Itemphim]=Phim (Trailer)="getTrailer($event)"></app-item-phim>
+        
+    </div> 
+    
+  
+  </div>   
+  
+  <div class="modal show" id="trailer" style="">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        
+  
+        <!-- Modal body --> 
+            <iframe [src]="trailer| safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+            <button type="button" class="close" style="color:white" data-dismiss="modal"><img src="https://123phim.vn/app/assets/img/icons/close.png" alt=""></button>
+        <!-- Modal footer -->
+    
+      </div>
+    </div>
+  </div>
+ 
